@@ -1,0 +1,41 @@
+﻿@using Lady_Lollipop.Data.ViewModel;
+@model LoginVM; 
+
+@{ 
+    ViewData["Title"] = "Log in your account";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Mashup.css" />
+</head>
+
+<div>
+    <p class="login-account">Log in your account</p>
+    <hr style="border: 1px solid #fd4b4b9e;" />
+    @if (TempData["Error"] != null)
+    {
+        <div>
+            <span class="login-error-msg"><b>Sorry!</b> @TempData["Error"]</span>
+        </div>
+    }
+    <div class="main-div-login">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label class="control-label" asp-for="EmailAddress"></label>
+                <input class="input-login-email form-control" asp-for="EmailAddress" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Password"></label>
+                <input class="input-login-email form-control" asp-for="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: flex; justify-content: space-between;">
+                <a class="cancel-login" asp-controller="Home" asp-action="Index">Cancel</a>
+                <input class="login-button" type="submit" value="Log In" />
+
+            </div>
+        </form>
+    </div>
+</div>

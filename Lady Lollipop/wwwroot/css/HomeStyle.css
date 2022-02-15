@@ -1,0 +1,218 @@
+﻿body {
+    background-color: #f9d4e478;
+}
+@font-face {
+    font-family: GrandHotel;
+    src: url(GrandHotel-Regular.ttf);
+}
+@font-face {
+    font-family: Galdeano;
+    src: url(Galdeano-Regular.ttf);
+}
+.search-bar {
+    border: 2px white solid;
+    border-radius: 12px;
+    color: white;
+    background-color: #FD4B4B;
+    position:relative;
+    top:40px;
+    right:120px;
+    padding-left: 10px;
+    height: 40px;
+    width: 250px;
+}
+.search-icon {
+    width: 37px;
+    height: 34px;
+    position: relative;
+    top: 36px;
+    right: 168px;
+    
+}
+::placeholder {
+    color: white;
+}
+
+.search-bar:focus {
+    border: 2px solid white;
+    outline: none;
+    background-color:#FD4B4B;
+}
+.search-bar:-webkit-autofill {
+    border: 2px solid white;
+    outline: none;
+    background-color: #FD4B4B !important;
+    -webkit-transition-delay: 9999s;
+}
+.header-layout{
+    background-color:white;
+    height:115px;
+    display:flex;
+    justify-content:space-evenly;
+}
+.logo{
+    position:relative;
+    top:7px;
+    right:62px;
+    width:120px;
+    height:100px;
+    
+}
+.header-div {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    left: 154px;
+    top:3px;
+
+}
+.profile-link {
+    text-decoration: none;
+    color: #FD4B4B;
+    font-family: Galdeano;
+    font-size: 23px;
+    position: relative;
+    top: 40px;
+    left:15px;
+}
+.profile-link:hover {
+    text-decoration: none;
+    color: #FD4B4B;
+    font-family: Galdeano;
+}
+
+.cart-icon {
+    width: 52px;
+    height: 65px;
+    position: relative;
+    top: 23px;
+    right:20px;
+}
+.nav-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 820px;
+    position: relative;
+    left: 310px;
+    top: 10px;
+}
+.out-nav-div {
+    background-color: #FD4B4B;
+    height:50px;
+}
+
+.p-navbar {
+    color: white;
+    text-decoration: none;
+    width: 166px;
+    font-size: 35px;
+    font-family: GrandHotel;
+    padding-bottom:5px;
+    position:relative;
+    bottom:10px;
+    text-align:center;
+    height:50px;
+ 
+}
+
+.p-navbar:hover {
+    color: #FD4B4B;
+    text-decoration: none;
+    background-color:white;
+    
+
+}
+.layout-footer {
+    background-color: #FD4B4B;
+    height: 84px;
+}
+.footer-p{
+    color:white;
+    font-family:GrandHotel;
+    text-align:center;
+    font-size:22px;
+}
+
+.div-footer {
+    display: flex;
+    justify-content: space-around;
+    width: 600px;
+    position: relative;
+    left: 450px;
+    bottom: 10px;
+}
+.a-footer{
+    text-decoration:none;
+    color:white !important;
+    font-family:Galdeano;
+    font-size:20px;
+}
+.a-footer:hover{
+    text-decoration:none;
+}
+.cart-number {
+    position: relative;
+    top: 33px;
+    font-size: 15px;
+    right: 40px;
+    background-color: #f95364;
+    height: 22px;
+    width: 21px;
+    text-align: center;
+    border-radius: 16px;
+    color: white;
+}
+.a-cart-items:hover{
+    color:white;
+    text-decoration:none;
+}
+.a-cart-items{
+    display:flex;
+    flex-direction:row;
+}
+
+button#profile-btn {
+    position: relative;
+    top: 32px;
+}
+
+/* Here is the style for Home index */
+/* Make the image fully responsive */
+.carousel-inner img {
+    width: 45;
+    height: 40%;
+    margin-top: 20px;
+    background-color: #f9d4e478;
+}
+
+.cake {
+    margin: 0 180px;
+    display: flex;
+    margin-top: 50px;
+}
+
+.cake2 {
+    display: flex;
+    margin-top: 50px;
+}
+
+    .cake2 text {
+        width: 78%;
+    }
+
+
+.p-title {
+    font-size: 50px;
+    text-align: center;
+}
+
+.text {
+    margin: 50px;
+}
+
+.photo img {
+    border-radius: 50%;
+    width: 615px;
+    height: 384.59px;
+}

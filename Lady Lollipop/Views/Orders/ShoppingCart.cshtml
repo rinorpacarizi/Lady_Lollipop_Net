@@ -1,0 +1,51 @@
+﻿@using Lady_Lollipop.Data.ViewModel;
+@model ShoppingCartVM
+
+@{
+    ViewData["Title"] = "List of orders";
+}
+<head>
+    <link rel="stylesheet" href="~/css/ShoppingCart.css" />
+</head>
+
+<h1 class="shop-title">ShoppingCart</h1>
+<hr style="border: 1px solid #fd4b4b9e"/>
+<p class="your-items" >Your Items:</p>
+
+<div>
+    <div>
+        @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+        {
+        <div class="inside-foreach-div">
+            <img class="img-shoppingcart" src="@item.Sweet.Picture" />
+
+
+            <p class="item-title">
+                @item.Sweet.Name
+            </p>
+
+            <div class="amount-div">
+                <a class="remove-items" asp-controller="Orders" asp-action="RemoveFromShoppingCart" asp-route-id="@item.Sweet.Id"><p style="font-size:17px;">-</p></a>
+                <span>@item.Amount</span>
+                <a class="remove-items"  asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.Sweet.Id"><p style="font-size:17px;">+</p></a>
+            </div>
+
+
+            <p class="item-price">@((item.Amount*item.Sweet.Price).ToString("c"))</p>
+
+            <hr />
+
+        </div>
+
+        }
+    </div>
+    <div>
+        <hr style="border: 1px solid #fd4b4b9e;width:700px;" />
+            <span class="total-price"><b>Total:</b></span>
+            <span class="total-price-num">@Model.ShoppingCartTotal.ToString("c")</span>
+        
+    </div>
+</div>
+<div style="padding-bottom:40px;">
+    <a class="checkout-btn" asp-action="CompleteOrder">Checkout</a>
+</div>

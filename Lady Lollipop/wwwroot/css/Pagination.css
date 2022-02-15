@@ -1,0 +1,15 @@
+﻿a.page-link:hover {
+    color: #FD4B4B;
+    text-decoration: none;
+}
+.page-item.active .page-link {
+    background-color: white !important;
+    color: #FD4B4B;
+    border-color: #FD4B4B;
+}
+a.page-link{
+    color:#FD4B4B;
+}
+a.page-link:focus{
+    outline:none;
+}

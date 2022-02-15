@@ -1,0 +1,2 @@
+create database Lady_Lollipop
+use Lady_Lollipop

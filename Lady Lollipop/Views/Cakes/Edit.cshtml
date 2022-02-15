@@ -1,0 +1,72 @@
+﻿@model Lady_Lollipop.Models.Cake
+
+@{
+    ViewData["Title"] = "Edit a Cakes";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/cakes.css" />
+</head>
+<h1 class="h1-create-edit">Edit a cake</h1>
+
+<hr style="border: 1px solid #fd4b4b9e;" />
+<div>
+    <div>
+        <form asp-action="Edit" class="form-create-edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group text-center">
+                <img class="img-create-edit" id="PicturePreview" />
+            </div>
+            <div class="form-group div-create-edit">
+                <label asp-for="Picture" class="control-label label-create-edit"></label>
+                <input asp-for="Picture" class="input-create-edit form-control" />
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+            <div class="form-group div-create-edit">
+                <label asp-for="Name" class="control-label label-create-edit"></label>
+                <input asp-for="Name" class="input-create-edit form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group div-create-edit">
+                <label asp-for="Price" class="control-label label-create-edit"></label>
+                <input asp-for="Price" class="input-create-edit form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group div-create-edit">
+                <label asp-for="Stock" class="control-label label-create-edit"></label>
+                <input asp-for="Stock" class="input-create-edit form-control" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+            <div class="form-group div-create-edit">
+                <label asp-for="Description" class="control-label label-create-edit"></label>
+                <textarea asp-for="Description" class="input-create-edit form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group div-create-edit">
+                <label asp-for="Ingridients" class="control-label label-create-edit"></label>
+                <textarea asp-for="Ingridients" class="input-create-edit form-control"></textarea>
+                <span asp-validation-for="Ingridients" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display:flex;justify-content:space-between;margin-left:15px;">
+                <a class="cancel-create-edit" asp-action="index"> Cancel</a>
+                <input type="submit" value="Update" class="submit-create-edit" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('PicturePreview');
+            output.src = $('#Picture').val();
+        })
+        $('#Picture').on("change", function () {
+            var output = document.getElementById('PicturePreview');
+            output.src = $(this).val();
+        })
+    </script>
+}

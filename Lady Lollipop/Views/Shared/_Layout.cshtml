@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Lady Lollipop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/HomeStyle.css" />
+
+</head>
+<body>
+    <header>
+        <div class="header-layout">
+            <div>
+                <form asp-action="Filter">
+                    <input name="searchString" type="text" class="search-bar" placeholder="Search" />
+                    <button type="submit" style="display:contents;"><img class="search-icon" src="~/Images/search.PNG" /></button>
+                </form>
+            </div>
+            <a asp-controller="home" asp-action="index"><img class="logo" src="~/Images/logo.PNG" /></a>
+
+            <partial name="_Identity.cshtml" />
+
+        </div>
+        <div class="out-nav-div">
+            <div class="nav-div">
+                <a class="p-navbar" asp-controller="home" asp-action="index">Home</a>
+                <a class="p-navbar" asp-controller="sweets" asp-action="index">Sweets</a>
+                <a class="p-navbar" asp-controller="Cakes" asp-action="Index">Cakes</a>
+                <a class="p-navbar" asp-controller="drinks" asp-action="index">Drinks</a>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid" style="height: 650px; display: table; background-color: #f9d4e478; ">
+        @RenderBody()
+    </div>
+    <footer class="layout-footer">
+        <div>
+            <p class="footer-p">Copyright© 2021| Lady Lollipop</p>
+            <div class="div-footer">
+                <a class="a-footer" href="#">Privacy Policy</a>
+                <a class="a-footer" href="#">Terms of Use</a>
+                <a class="a-footer" href="#">About us</a>
+                <a class="a-footer" href="#">Contact us</a>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

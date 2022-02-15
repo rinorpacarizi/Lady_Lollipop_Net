@@ -1,0 +1,16 @@
+﻿@model int;
+
+<head>
+    <link rel="stylesheet" href="~/css/HomeStyle.css" />
+</head>
+
+
+@if (Model > 0)
+{
+    <a asp-controller="Orders" asp-action="ShoppingCart" class="a-cart-items"> <img class="cart-icon" src="~/Images/cart.PNG" /><p class="cart-number">@Model</p></a>
+
+}
+else
+{
+    <a asp-controller="Orders" asp-action="ShoppingCart" class="a-cart-items"> <img class="cart-icon" src="~/Images/cart.PNG" /></a>
+}

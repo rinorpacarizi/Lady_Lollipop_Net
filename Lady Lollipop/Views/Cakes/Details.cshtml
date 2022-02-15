@@ -1,0 +1,64 @@
+﻿@model Lady_Lollipop.Models.Cake
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<head>
+    <link rel="stylesheet" href="~/css/cakes.css" />
+</head>
+
+<div class="main-div-details">
+
+    <div class="form-group text-center">
+        <img class="img-details" id="PicturePreview" />
+    </div>
+    <div style="padding-top:13px;">
+        <div class="form-group ">
+            <input class="input-create form-control" style="display:none;" asp-for="Picture" />
+        </div>
+        <div class="form-group div-create">
+            <p class="name-details">
+                @Html.DisplayFor(model => model.Name)
+            </p>
+        </div>
+        <div class="form-group div-create">
+            <p class="price-details">$@Html.DisplayFor(model => model.Price)</p>
+        </div>
+        <div class="form-group div-create">
+            <p class="description-details">
+                @Html.DisplayFor(model => model.Description)
+            </p>
+        </div>
+
+        <div class="form-group div-create">
+            <p class="stock-details">
+                @Html.DisplayFor(model => model.Stock) in Stock
+            </p>
+
+        </div>
+
+
+    </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a class="a-cart-details-sweets" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@Model.Id"><p class="cart-button-details">Add To Cart</p></a>
+    }
+    }
+    else
+    {
+
+    <button disabled class="a-cart-details-sweets">Add To Cart</button>
+
+    }
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('PicturePreview');
+            output.src = $('#Picture').val();
+        })
+    </script>
+}

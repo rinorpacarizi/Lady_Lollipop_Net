@@ -1,0 +1,60 @@
+﻿@using Lady_Lollipop.Data.ViewModel;
+@model List<Order>
+
+@{
+    ViewData["Title"] = "All Orders";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Mashup.css" />
+</head>
+<p>
+    <h4 class="login-account">List of all orders</h4>
+</p>
+<hr style="border: 1px solid #fd4b4b9e;" />
+<div class="main-div-orders">
+
+
+    <table>
+        <thead>
+            <tr>
+                <th class="table-element-order">OrderID</th>
+                <th class="table-element-order">Items</th>
+                <th class="table-element-order" style="padding-left:50px;">Total</th>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <th class="table-element-order" style=" padding-left: 20px;">User</th>
+                }
+            </tr>
+        </thead>
+       
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td style="color: #FD4B4B; font-size: 23px; font-weight: 700; text-align: center; ">@order.OrderId</td>
+                    <td>
+                        <ul class="ul-order">
+                            @foreach (var item in order.OrderItems)
+                            {
+                                <li style="color: #FD4B4B; font-size: 23px; font-weight: 500; padding-top: 11px; text-align: center;">
+                                    <span>@item.Amount </span>@item.Price.ToString("c") - @item.Sweet.Name
+                                </li>
+                            }
+                        </ul>
+                    </td>
+                    <td style="color: #FD4B4B; font-size: 23px; font-weight: 500; text-align: center; padding-left:50px;">
+                        @order.OrderItems.Select(m => m.Sweet.Price * m.Amount).Sum().ToString("c")
+                    </td>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <td style="text-align: center; font-size: 18px; color: black; font-weight:700;padding-left:20px;"> @order.User.UserName</td>
+                    }
+                    
+                </tr>
+                <tr style="border-bottom: 1px solid #000;"></tr>
+            }
+        </tbody>
+
+    </table>
+</div>

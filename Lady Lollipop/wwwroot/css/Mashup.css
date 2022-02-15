@@ -1,0 +1,171 @@
+﻿@font-face {
+    font-family: GrandHotel;
+    src: url(GrandHotel-Regular.ttf);
+}
+
+@font-face {
+    font-family: Galdeano;
+    src: url(Galdeano-Regular.ttf);
+}
+
+.p-fullName {
+    color: #FD4B4B;
+    padding-top: 4px;
+    font-weight: 500;
+}
+
+.profile-login {
+    padding-right: 10px;
+}
+
+.login-account {
+    color: #FD4B4B;
+    text-align: center;
+    font-family: GrandHotel;
+    padding-top: 15px;
+    font-size: 55px;
+    position: relative;
+}
+
+.input-login-email {
+    border: 1px solid #FD4B4B;
+}
+
+.input-login-email:focus {
+        border: 1px solid #FD4B4B;
+        box-shadow: 1px 2px 6px #cc66669e;
+
+}
+.main-div-login {
+    position: relative;
+    left: 500px;
+    width: 500px;
+    top:100px;
+}
+.login-button {
+    width: 95px;
+    height: 36px;
+    border-radius: 6px;
+    background-color: lightseagreen;
+    color: white;
+    border: none;
+}
+.cancel-login {
+    color: white;
+    background: red;
+    border: none;
+    width: 95px;
+    height: 36px;
+    border-radius: 6px;
+    text-align: center;
+    padding-top: 5px;
+}
+    .cancel-login:hover {
+        text-decoration: none;
+        color: white;
+    }
+.login-error-msg {
+    position: relative;
+    left: 540px;
+    font-size: 21px;
+    color: unset;
+    top: 75px;
+    background-color: #FD4B4B;
+    border-radius: 7px;
+    padding: 6px;
+}
+.register-error-msg {
+    position: relative;
+    left: 540px;
+    font-size: 21px;
+    color: unset;
+    top: 75px;
+    background-color: #FD4B4B;
+    border-radius: 7px;
+    padding: 6px;
+}
+.main-div-register {
+    position: relative;
+    left: 500px;
+    width: 500px;
+
+}
+.input-register-email {
+    border: 1px solid #FD4B4B;
+}
+    .input-register-email:hover {
+        border: 1px solid #FD4B4B;
+        box-shadow: 1px 2px 6px #cc66669e;
+    }
+.sign-up-account {
+    color: #FD4B4B;
+    text-align: center;
+    font-family: GrandHotel;
+    padding-top: 15px;
+    font-size: 55px;
+    position: relative;
+}
+.register-button {
+    width: 95px;
+    height: 36px;
+    border-radius: 6px;
+    background-color: lightseagreen;
+    color: white;
+    border: none;
+}
+.cancel-register {
+    color: white;
+    background: red;
+    border: none;
+    width: 95px;
+    height: 36px;
+    border-radius: 6px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+    .cancel-register:hover {
+        text-decoration: none;
+        color: white;
+    }
+.main-div-orders {
+    position: relative;
+    left:420px;
+    width: 800px;
+}
+.table-element-order {
+    color: #FD4B4B;
+    font-size: 23px;
+    text-align: center;
+}
+.ul-order{
+    text-decoration:none;
+    list-style:none;
+}
+.ul-userlist{
+    list-style:none;
+    position:relative;
+    left:430px;
+    width:750px;
+}
+.li-users {
+    font-size: 25px;
+    color: black;
+    font-weight: 600;
+}
+.span-fullname{
+    width:100px;
+}
+.email-users {
+    color: #FD4B4B;
+    font-size: 23px;
+    text-align: center;
+    position:relative;
+    left:200px;
+}
+.main-div-users {
+    position: relative;
+    left: 475px;
+    width: 800px;
+    top:40px;
+}

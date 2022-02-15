@@ -1,0 +1,49 @@
+﻿@using Lady_Lollipop.Data.ViewModel;
+@model RegisterVM; 
+
+@{ 
+    ViewData["Title"] = "Sign up for a new account";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Mashup.css" />
+</head>
+<div>
+    <p class="sign-up-account">Sign up for a new account</p>
+    <hr style="border: 1px solid #fd4b4b9e;" />
+    @if (TempData["Error"] != null)
+    {
+        <div>
+            <span class="register-error-msg"><b>Sorry!</b> @TempData["Error"]</span>
+        </div>
+    }
+    <div class="main-div-register">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label class="control-label" asp-for="FullName"></label>
+                <input class="input-register-email form-control" asp-for="FullName" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="EmailAddress"></label>
+                <input  class="input-register-email form-control" asp-for="EmailAddress" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Password"></label>
+                <input  class="input-register-email form-control"asp-for="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="ConfirmPassword"></label>
+                <input class="input-register-email form-control" asp-for="ConfirmPassword" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div  class="form-group" style="display: flex; justify-content: space-between;">
+                <a class="cancel-register " asp-controller="Home" asp-action="Index">Cancel</a>
+                <input class="register-button" type="submit" value="Sign up" />
+
+            </div>
+        </form>
+    </div>
+</div>
