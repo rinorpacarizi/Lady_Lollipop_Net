@@ -14,16 +14,38 @@ namespace Lady_Lollipop.Controllers
     public class CakesController : Controller
     {
         private readonly ICakesService _service;
+        private readonly ApplicationDbContext _context;
 
-        public CakesController(ICakesService service)
+        public CakesController(ICakesService service, ApplicationDbContext context)
         {
             _service = service;
+            _context = context;
         }
 
         // GET: Cakes
-        public async Task<IActionResult> Index(int page=1)
+        public async Task<IActionResult> Index(string sortOrder, int page=1)
         {
-            List<Cake> cakes = (List<Cake>)await _service.GetAllAsync();
+            ViewBag.PriceSortParam = String.IsNullOrEmpty(sortOrder) ? "price_desc" : "";
+            ViewBag.StockSortParam = String.IsNullOrEmpty(sortOrder) ? "stock_desc" : "stock_asc";
+            var cakes = await _context.Cakes.ToListAsync();
+            cakes = cakes.OrderByDescending(s => s.Price).ToList<Cake>();
+
+            switch (sortOrder)
+            {
+                case "price_desc":
+                    cakes = cakes.OrderBy(s => s.Price).ToList<Cake>();
+                    break;
+                case "stock_desc":
+                    cakes = cakes.OrderByDescending(s => s.Stock).ToList<Cake>();
+                    break;
+                case "stock_asc":
+                    cakes = cakes.OrderBy(s => s.Stock).ToList<Cake>();
+                    break;
+                default:
+                    //sweets =sweets.OrderBy(s => s.Price).ToList<Sweet>();
+                    break;
+            }
+
             const int pageSize = 8;
             if (page < 1)
             {

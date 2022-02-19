@@ -8,10 +8,13 @@
     src: url(Galdeano-Regular.ttf);
 }
 .row-div {
+    position:relative;
+    left:20px;
+    top:10px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding:10px 65px 0px 100px;
+    padding:10px 30px 0px 100px;
 }
 .create-button{
     color:white;
@@ -313,4 +316,15 @@
 }
 .edit-pencil{
     text-align:center;
+}
+.sweet-filter{
+    background-color:white !important;
+    color:#FD4B4B !important;
+}
+.btn-secondary:hover {
+    color: #FD4B4B !important;
+    background-color: #f0e9e9d6 !important;
+}
+secondary.dropdown-toggle:focus{
+    box-shadow:none !important;
 }

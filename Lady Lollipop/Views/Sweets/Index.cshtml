@@ -26,6 +26,18 @@
 
     <div>
         <h1 class="title"> Sweets</h1>
+
+        <div class="dropdown dropleft" style="position: relative; float: right; bottom: 55px;">
+            <button class="sweet-filter btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filters
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewBag.PriceSortParam">Price</a>
+                <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewBag.StockSortParam">Stock</a>
+            </div>
+        </div>
+
+
         <ul class="row-div">
             @foreach (var item in Model)
             {

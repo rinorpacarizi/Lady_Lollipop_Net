@@ -180,8 +180,8 @@ button#profile-btn {
 /* Here is the style for Home index */
 /* Make the image fully responsive */
 .carousel-inner img {
-    width: 45;
-    height: 40%;
+    width: 900px;
+    height: 100%;
     margin-top: 20px;
     background-color: #f9d4e478;
 }

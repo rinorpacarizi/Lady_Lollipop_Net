@@ -14,16 +14,38 @@ namespace Lady_Lollipop.Controllers
     public class SweetsController : Controller
     {
         private readonly ISweetsService _service;
+        private readonly ApplicationDbContext _context;
 
-        public SweetsController(ISweetsService service)
+        public SweetsController(ISweetsService service, ApplicationDbContext context)
         {
             _service = service;
+            _context = context;
         }
 
         // GET: Sweets
-        public async Task<IActionResult> Index(int page=1)
+        public async Task<IActionResult> Index(string sortOrder,int page=1)
         {
-            List<Sweet> sweets = (List<Sweet>)await _service.GetAllAsync();
+            ViewBag.PriceSortParam =String.IsNullOrEmpty(sortOrder)? "price_desc": "";
+            ViewBag.StockSortParam = String.IsNullOrEmpty(sortOrder) ? "stock_desc" : "stock_asc";
+            var sweets = await _context.Sweets.ToListAsync();
+            sweets = sweets.OrderByDescending(s => s.Price).ToList<Sweet>();
+
+            switch (sortOrder)
+            {
+                case "price_desc":
+                   sweets = sweets.OrderBy(s => s.Price).ToList<Sweet>();
+                    break;
+                case "stock_desc":
+                    sweets = sweets.OrderByDescending(s => s.Stock).ToList<Sweet>();
+                    break;
+                case "stock_asc":
+                    sweets = sweets.OrderBy(s => s.Stock).ToList<Sweet>();
+                    break;
+                default:
+                  //sweets =sweets.OrderBy(s => s.Price).ToList<Sweet>();
+                    break;
+            }
+
             const int pageSize = 8;
             if (page < 1)
             {
@@ -34,8 +56,6 @@ namespace Lady_Lollipop.Controllers
             int resSkip = (page - 1) * pageSize;
             var data = sweets.Skip(resSkip).Take(pager.PageSize).ToList();
             this.ViewBag.Pagination = pager;
-
-
             return View(data);
         }
         public async Task<IActionResult> Filter(string searchString)

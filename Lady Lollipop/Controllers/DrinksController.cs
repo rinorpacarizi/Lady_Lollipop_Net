@@ -14,16 +14,38 @@ namespace Lady_Lollipop.Controllers
     public class DrinksController : Controller
     {
         private readonly IDrinksService _service;
+        private readonly ApplicationDbContext _context;
 
-        public DrinksController(IDrinksService service)
+        public DrinksController(IDrinksService service, ApplicationDbContext context)
         {
             _service = service;
+            _context = context;
         }
 
         // GET: Drinks
-        public async Task<IActionResult> Index(int page=1)
+        public async Task<IActionResult> Index(string sortOrder, int page=1)
         {
-            List<Drink> drinks =(List<Drink>)await _service.GetAllAsync();
+            ViewBag.PriceSortParam = String.IsNullOrEmpty(sortOrder) ? "price_desc" : "";
+            ViewBag.StockSortParam = String.IsNullOrEmpty(sortOrder) ? "stock_desc" : "stock_asc";
+            var drinks = await _context.Drinks.ToListAsync();
+            drinks = drinks.OrderByDescending(s => s.Price).ToList<Drink>();
+
+            switch (sortOrder)
+            {
+                case "price_desc":
+                    drinks = drinks.OrderBy(s => s.Price).ToList<Drink>();
+                    break;
+                case "stock_desc":
+                    drinks = drinks.OrderByDescending(s => s.Stock).ToList<Drink>();
+                    break;
+                case "stock_asc":
+                    drinks = drinks.OrderBy(s => s.Stock).ToList<Drink>();
+                    break;
+                default:
+                    //sweets =sweets.OrderBy(s => s.Price).ToList<Sweet>();
+                    break;
+            }
+
             const int pageSize = 8;
             if (page < 1)
             {
@@ -98,7 +120,7 @@ namespace Lady_Lollipop.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Picture,Name,Price,Stock,Description,Ingridients")] Drink drink)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Picture,Name,Price,Stock,Description,Ingridients")] Drink drink)
         {
 
             if (id != drink.Id)

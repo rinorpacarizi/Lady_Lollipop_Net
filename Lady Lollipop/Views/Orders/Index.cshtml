@@ -18,7 +18,6 @@
     <table>
         <thead>
             <tr>
-                <th class="table-element-order">OrderID</th>
                 <th class="table-element-order">Items</th>
                 <th class="table-element-order" style="padding-left:50px;">Total</th>
                 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
@@ -32,13 +31,12 @@
             @foreach (var order in Model)
             {
                 <tr>
-                    <td style="color: #FD4B4B; font-size: 23px; font-weight: 700; text-align: center; ">@order.OrderId</td>
                     <td>
                         <ul class="ul-order">
                             @foreach (var item in order.OrderItems)
                             {
                                 <li style="color: #FD4B4B; font-size: 23px; font-weight: 500; padding-top: 11px; text-align: center;">
-                                    <span>@item.Amount </span>@item.Price.ToString("c") - @item.Sweet.Name
+                                    <span>@item.Amount x </span>@item.Price.ToString("c") - @item.Sweet.Name
                                 </li>
                             }
                         </ul>
@@ -52,7 +50,7 @@
                     }
                     
                 </tr>
-                <tr style="border-bottom: 1px solid #000;"></tr>
+                <tr style="border-bottom: 1px solid white;"></tr>
             }
         </tbody>
 
