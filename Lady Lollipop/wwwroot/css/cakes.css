@@ -210,6 +210,18 @@
     .cart-button-details:focus {
         outline: none;
     }
+.cart-button-details-disabled {
+    background-color: gray;
+    color: #FFFFFF;
+    border-radius: 20px;
+    width: 125px;
+    height: 40px;
+    border: none;
+    position: relative;
+    right: 10px;
+    top: 45px;
+    padding-top: 2px;
+}
 
 .a-details {
     color: white;

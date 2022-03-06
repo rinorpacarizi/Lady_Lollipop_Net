@@ -37,41 +37,43 @@
             </div>
         </div>
 
-
         <ul class="row-div">
             @foreach (var item in Model)
             {
-                <li class="main-inside-div">
+                
+            <li class="main-inside-div">
+                
+                <div>
+                    <a asp-controller="Sweets" asp-action="Details" asp-route-id="@item.Id"><img class="img-candy" src="@item.Picture" /></a>
+                </div>
+                <div>
+                    <p class="name-p"><a asp-controller="Sweets" class="name-p" asp-action="Details" asp-route-id="@item.Id">@item.Name</a></p>
+                    <p class="price-p" step="0.01">$@item.Price</p>
+                    <p class="stock-p">@item.Stock in stock</p>
+                </div>
+                @if (item.Stock >= 1 && User.Identity.IsAuthenticated)
+                {
+
+                    <a class="cart-button-enabled" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.Id"><p>Add To Cart</p></a>
+
+
+                }
+                else
+                {
                     <div>
-                        <a asp-controller="Sweets" asp-action="Details" asp-route-id="@item.Id"><img class="img-candy" src="@item.Picture" /></a>
+                        <button disabled class="cart-button">Add To Cart</button>
                     </div>
-                    <div>
-                        <p class="name-p"><a asp-controller="Sweets" class="name-p" asp-action="Details" asp-route-id="@item.Id">@item.Name</a></p>
-                        <p class="price-p" step="0.01">$@item.Price</p>
-                        <p class="stock-p">@item.Stock in stock</p>
-                    </div>
-                    @if (item.Stock >= 1 && User.Identity.IsAuthenticated)
+
+                }
+
+                <div class="index-button-div">
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
-
-                        <a class="cart-button-enabled" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.Id"><p>Add To Cart</p></a>
-
-
+                        <a class="edit-delete-sweets" asp-controller="Sweets" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-fill text-light edit-pencil"></i></a>
+                        <a class="edit-delete-sweets" asp-controller="Sweets" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash text-light delete-can"></i></a>
                     }
-                    else
-                    {
-                        <div>
-                            <button disabled class="cart-button">Add To Cart</button>
-                        </div>
-
-                    }
-                    <div class="index-button-div">
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                        {
-                            <a class="edit-delete-sweets" asp-controller="Sweets" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-fill text-light edit-pencil"></i></a>
-                            <a class="edit-delete-sweets" asp-controller="Sweets" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash text-light delete-can"></i></a>
-                        }
-                    </div>
-                </li>
+                </div>
+            </li>
             }
         </ul>
     </div>

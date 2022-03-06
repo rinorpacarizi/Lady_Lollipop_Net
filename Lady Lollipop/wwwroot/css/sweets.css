@@ -101,6 +101,18 @@
 .cart-button:disabled {
     background-color: grey;
 }
+.cart-button-details-disabled {
+    background-color: grey;
+    color: #FFFFFF;
+    border-radius: 20px;
+    width: 125px;
+    height: 40px;
+    border: none;
+    position: relative;
+    right: 10px;
+    top: 45px;
+    padding-top: 2px;
+}
 .h1-create-edit {
     color: #FD4B4B;
     text-align: center;
